@@ -15,9 +15,37 @@ namespace Storage.Controllers
         }
 
         // GET: ProdutosController
-        public ActionResult Index()
+        public ActionResult Index(string query, string tipoPesquisa)
         {
-            return View(db.PRODUTOS.ToList());
+            if (string.IsNullOrEmpty(query) )
+            {
+                return View(db.PRODUTOS.ToList());
+            }
+            else if (tipoPesquisa == "Todos")
+            {
+                return View(db.PRODUTOS.Where(a => a.Nome.Contains(query) || a.Preco.Equals(query)));
+            }
+            else if(tipoPesquisa == "Nome")
+            {
+                return View(db.PRODUTOS.Where(a => a.Nome.Contains(query)));
+            }
+            else if (tipoPesquisa == "Preco")
+            {
+                int preco;
+                if (int.TryParse(query, out preco))
+                {
+                    return View(db.PRODUTOS.Where(a => a.Preco.Equals(preco)));
+                }
+                else
+                {
+                    return View("Error");
+                }
+            }
+            else 
+            {
+                return View(db.PRODUTOS.ToList());
+            }
+            
         }
 
         // GET: ProdutosController/Details/5
