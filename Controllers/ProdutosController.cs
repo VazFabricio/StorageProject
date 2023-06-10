@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Storage.Entidades;
+using Storage.Models;
 
 namespace Storage.Controllers
 {
@@ -57,7 +58,9 @@ namespace Storage.Controllers
         // GET: ProdutosController/Create
         public ActionResult Create()
         {
-            return View();
+            ProdutosModel model = new ProdutosModel();
+            model.ListaCategorias = db.CATEGORIA.ToList();
+            return View(model);
         }
 
         // POST: ProdutosController/Create

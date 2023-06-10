@@ -1,4 +1,4 @@
-﻿@model Storage.Entidades.Produtos
+﻿@model Storage.Models.ProdutosModel
 
 @{
     ViewData["Title"] = "Create";
@@ -17,6 +17,13 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
+            <label>Categoria</label>
+            <select name="CategoriaId" class="form-control">
+                @foreach(var item in Model.ListaCategorias)
+                {
+                    <option value="@item.Id">@item.Nome</option>
+                }
+            </select>
             <div class="form-group">
                 <label asp-for="Preco" class="control-label"></label>
                 <input asp-for="Preco" class="form-control" />

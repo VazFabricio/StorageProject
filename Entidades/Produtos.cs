@@ -1,4 +1,5 @@
-﻿namespace Storage.Entidades
+﻿
+namespace Storage.Entidades
 {
     public class Produtos
     {
@@ -7,6 +8,8 @@
         public double Preco { get; set; }
         public int QuantidadeEstoque { get; set; }
         public bool Ativo { get; set; }
+        public int CategoriaId { get; set; } = 0;
+        public Categoria categoria { get; set; }
 
     }
 }

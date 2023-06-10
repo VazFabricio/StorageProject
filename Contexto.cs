@@ -12,6 +12,7 @@ namespace Storage
         }
 
         public DbSet<Produtos> PRODUTOS { get; set; }
+        public DbSet<Categoria> CATEGORIA { get; set; }
 
     }
 }
