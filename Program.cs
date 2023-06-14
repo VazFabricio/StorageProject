@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-builder.Services.AddDbContext<Contexto>(a => a.UseMySQL("Server=localhost;Database=AgendaMvc;Uid=root;Pwd=Fabricio_2004"));
+builder.Services.AddDbContext<Contexto>(a => a.UseMySQL("Server=localhost;Database=AgendaMvc;Uid=root;Pwd=data@ccess"));
 
 
 

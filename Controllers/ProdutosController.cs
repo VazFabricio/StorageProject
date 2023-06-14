@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Storage.Entidades;
 using Storage.Models;
 
@@ -20,11 +21,7 @@ namespace Storage.Controllers
         {
             if (string.IsNullOrEmpty(query) )
             {
-                return View(db.PRODUTOS.ToList());
-            }
-            else if (tipoPesquisa == "Todos")
-            {
-                return View(db.PRODUTOS.Where(a => a.Nome.Contains(query) || a.Preco.Equals(query)));
+                return View(db.PRODUTOS.Include(a => a.categoria).ToList());
             }
             else if(tipoPesquisa == "Nome")
             {
@@ -44,7 +41,7 @@ namespace Storage.Controllers
             }
             else 
             {
-                return View(db.PRODUTOS.ToList());
+                return View(db.PRODUTOS.Include(a => a.categoria).ToList());
             }
             
         }
